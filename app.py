@@ -16,7 +16,6 @@ app.secret_key = 'your_secret_key_here'  # Change this to a secure random value
 
 # Ensure DB is initialized for all environments (including production)
 init_db(DATABASE)
-fetch_and_update()  # Fetch news immediately at startup
 
 USERS_FILE = os.path.join(os.path.dirname(__file__), 'users.json')
 
@@ -92,6 +91,9 @@ def fetch_and_update():
     except Exception as e:
         print("Fetch error:", e)
         traceback.print_exc()
+
+# Fetch news immediately at startup (after definition)
+fetch_and_update()
 
 # Fetch news immediately at startup
 fetch_and_update()
