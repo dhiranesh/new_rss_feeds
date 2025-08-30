@@ -3,3 +3,5 @@ APScheduler
 requests
 feedparser
 beautifulsoup4
+readability-lxml
+python-dateutil
