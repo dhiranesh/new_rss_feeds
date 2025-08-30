@@ -1,11 +1,17 @@
+
 import sqlite3
+import os
 from contextlib import contextmanager
 
 DB_PATH = None  # set by init_db
 
 def init_db(db_path: str):
     global DB_PATH
+    # Ensure the database is created in the correct location (relative to this file)
+    if not os.path.isabs(db_path):
+        db_path = os.path.join(os.path.dirname(__file__), db_path)
     DB_PATH = db_path
+    # This will create the DB file if it does not exist
     with sqlite3.connect(DB_PATH) as con:
         con.execute("""
         CREATE TABLE IF NOT EXISTS articles (
