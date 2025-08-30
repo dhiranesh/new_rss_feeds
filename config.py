@@ -8,5 +8,5 @@ USER_AGENT = (
     "Chrome/124.0.0.0 Safari/537.36"
 )
 DATABASE = "news.db"
-TIMEZONE = "Asia/Kolkata"
+TIMEZONE = "US"
 
