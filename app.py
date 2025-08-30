@@ -10,8 +10,12 @@ from fetcher import parse_rss, extract_article_content, iso_dt
 import json
 import os
 
+
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Change this to a secure random value
+
+# Ensure DB is initialized for all environments (including production)
+init_db(DATABASE)
 
 USERS_FILE = os.path.join(os.path.dirname(__file__), 'users.json')
 
@@ -132,7 +136,7 @@ def start_scheduler():
     # Make an immediate first run
     fetch_and_update()
 
+
 if __name__ == "__main__":
-    init_db(DATABASE)
     start_scheduler()
     app.run(host="0.0.0.0", port=5000, debug=True)
